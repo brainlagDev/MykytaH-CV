@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mykyta Horshkov · Unity Developer</title>
+<meta name="description" content="Mykyta Horshkov, Unity Developer (C#). CV and gameplay portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout: dark "editor" backdrop, ultramarine accent; header, then the portfolio as justified rows of clips, then CV in two columns */
+  --bg: #090C22;
+  --panel: #10153A;
+  --line: #222B5C;
+  --text: #E9ECFB;
+  --muted: #9AA3D1;
+  --ultra: #4560FF;
+  --ultra-soft: #9DB0FF;
+  --display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--text); font: 16px/1.55 var(--body); }
+a { color: var(--ultra-soft); text-decoration-color: color-mix(in srgb, var(--ultra-soft) 45%, transparent); text-underline-offset: 3px; }
+a:hover { color: #fff; }
+a:focus-visible { outline: 2px solid var(--ultra-soft); outline-offset: 2px; border-radius: 3px; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+h1, h2, h3, h4 { font-family: var(--display); text-wrap: balance; margin: 0; }
+
+.hero { border-bottom: 1px solid var(--line); background:
+  linear-gradient(180deg, color-mix(in srgb, var(--ultra) 22%, var(--bg)) 0%, var(--bg) 100%); }
+.hero .wrap { padding-top: 56px; padding-bottom: 36px; display: grid; gap: 14px; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+.role { font-family: var(--display); font-size: 1.25rem; font-weight: 600; color: var(--ultra-soft); }
+.tagline { font-family: var(--mono); font-size: .9rem; color: var(--muted); }
+.contact { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 0; margin: 6px 0 0; list-style: none; font-size: .95rem; color: var(--muted); }
+.summary { max-width: 68ch; color: var(--text); margin: 6px 0 0; }
+.summary strong { color: #fff; font-weight: 600; }
+
+section { padding: 44px 0 8px; }
+.sec-h { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.sec-h h2 { font-size: .85rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ultra-soft); font-weight: 600; }
+.sec-h::after { content: ""; flex: 1; height: 2px; background: linear-gradient(90deg, var(--ultra), transparent); }
+
+.row { display: flex; gap: 18px; margin-bottom: 18px; }
+.work { margin: 0; min-width: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; }
+.clips { display: flex; gap: 2px; background: var(--line); }
+.clips video { display: block; width: 100%; min-width: 0; height: auto; object-fit: cover; background: #000; }
+figcaption { padding: 14px 16px 16px; display: grid; gap: 6px; border-top: 3px solid var(--ultra); flex: 1; align-content: start; }
+figcaption h3 { font-size: 1.05rem; font-weight: 600; }
+figcaption p { margin: 0; color: var(--muted); font-size: .93rem; max-width: 70ch; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 4px 0 0; list-style: none; }
+.tags li { font: 500 .74rem var(--mono); color: var(--ultra-soft); border: 1px solid var(--line); padding: 2px 8px; border-radius: 99px; }
+
+.work.wide { flex-direction: row; }
+.work.wide .clips { flex: 0 0 64%; }
+.work.wide figcaption { border-top: 0; border-left: 3px solid var(--ultra); align-content: center; padding: 20px 22px; }
+.cv > section { padding-top: 0; }
+.cv { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); gap: 48px; padding-bottom: 64px; }
+.job { padding: 0 0 20px 18px; margin-bottom: 20px; border-left: 2px solid var(--line); position: relative; }
+.job::before { content: ""; position: absolute; left: -6px; top: 7px; width: 10px; height: 10px; border-radius: 50%; background: var(--ultra); box-shadow: 0 0 0 3px var(--bg); }
+.job header { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; align-items: baseline; }
+.job h3 { font-size: 1.08rem; font-weight: 600; }
+.at { color: var(--ultra-soft); }
+.job time { font: .85rem var(--mono); color: var(--muted); white-space: nowrap; }
+.job ul { margin: 10px 0 0; padding-left: 18px; display: grid; gap: 5px; }
+.job li { color: #CDD3F1; }
+.job li::marker { color: var(--ultra); }
+.job strong { color: #fff; font-weight: 600; }
+
+aside { display: grid; gap: 0; align-content: start; }
+aside section { padding-top: 0; padding-bottom: 32px; }
+.skill { margin-bottom: 16px; }
+.skill h4 { font-size: .9rem; font-weight: 600; margin-bottom: 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
+.chips li { font-size: .82rem; background: color-mix(in srgb, var(--ultra) 16%, var(--panel)); border: 1px solid color-mix(in srgb, var(--ultra) 35%, var(--line)); padding: 3px 9px; border-radius: 6px; }
+.projects { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.projects p { margin: 2px 0 0; color: var(--muted); font-size: .9rem; }
+.pname { font-weight: 600; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.plat { font: 500 .72rem var(--mono); color: var(--ultra-soft); border: 1px solid var(--line); padding: 1px 7px; border-radius: 99px; }
+.langs { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.langs li { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); padding-bottom: 6px; }
+.lvl { font-family: var(--mono); color: var(--ultra-soft); }
+
+@media (max-width: 760px) {
+  .row { flex-direction: column; }
+  .work { flex: none !important; }
+  .work.wide { flex-direction: column; }
+  .work.wide figcaption { border-left: 0; border-top: 3px solid var(--ultra); }
+  .cv { grid-template-columns: 1fr; gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .clips video { animation: none; } }
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <h1>Mykyta Horshkov</h1>
+  <div class="role">Unity Developer</div>
+  <div class="tagline">C# · Gameplay &amp; Core Systems · Multiplayer · PC &amp; Mobile</div>
+  <ul class="contact">
+    <li>Lviv, Ukraine</li>
+    <li>jetnekit@gmail.com</li>
+    <li><a href="https://www.linkedin.com/in/brainlagdeveloper/">linkedin.com/in/brainlagdeveloper</a></li>
+  </ul>
+  <p class="summary">Unity developer with <strong>4+ years of C# experience</strong>, building <strong>gameplay and core systems</strong> for PC and mobile games. Shipped titles on <strong>Steam</strong> and <strong>Google Play</strong>. Focused on clean, extensible architecture: <strong>composition, dependency injection and data-driven design</strong>, with hands-on experience in multiplayer networking, custom physics, URP shaders and mobile performance optimization.</p>
+</div></header>
+<main class="wrap">
+  <section id="portfolio">
+    <div class="sec-h"><h2>Portfolio</h2></div>
+    <div class="row"><figure class="work" style="flex:3.5532 1 0"><div class="clips"><video src="media/gestures-fireball.mp4" poster="media/gestures-fireball.jpg" autoplay muted loop playsinline style="aspect-ratio:1.7766;flex:1.7766 1 0" aria-label="Gesture-Recognition Spell System gameplay clip"></video><video src="media/gestures-telekinesis.mp4" poster="media/gestures-telekinesis.jpg" autoplay muted loop playsinline style="aspect-ratio:1.7766;flex:1.7766 1 0" aria-label="Gesture-Recognition Spell System gameplay clip"></video></div><figcaption><h3>Gesture-Recognition Spell System</h3><p>Mouse-drawn gestures matched against templates with confidence and rotation scoring, then prepared and cast as spells (Fireball, Telekinesis). Includes an in-game tool for creating custom gestures.</p><ul class="tags"><li>Gesture recognition</li><li>Spell casting</li><li>Tooling</li></ul></figcaption></figure></div><div class="row"><figure class="work" style="flex:1.7766 1 0"><div class="clips"><video src="media/hexmap.mp4" poster="media/hexmap.jpg" autoplay muted loop playsinline style="aspect-ratio:1.7766;flex:1.7766 1 0" aria-label="Procedural Hex Map gameplay clip"></video></div><figcaption><h3>Procedural Hex Map</h3><p>Wave Function Collapse generator with local repair, chunked growth, seeded regeneration, water ratio control and decoration placement.</p><ul class="tags"><li>WFC</li><li>Procedural generation</li></ul></figcaption></figure><figure class="work" style="flex:1.2000 1 0"><div class="clips"><video src="media/combat.mp4" poster="media/combat.jpg" autoplay muted loop playsinline style="aspect-ratio:1.2000;flex:1.2000 1 0" aria-label="Melee Combat Showcase gameplay clip"></video></div><figcaption><h3>Melee Combat Showcase</h3><p>Melee combat with sword swings, hit feedback, impact VFX and text pop-ups, enemy health bars and break-apart deaths.</p><ul class="tags"><li>Game feel</li><li>VFX</li></ul></figcaption></figure></div><div class="row"><figure class="work wide" style="flex:1.9310 1 0"><div class="clips"><video src="media/upgrades.mp4" poster="media/upgrades.jpg" autoplay muted loop playsinline style="aspect-ratio:1.9310;flex:1.9310 1 0" aria-label="Procedural Radial Upgrade Tree gameplay clip"></video></div><figcaption><h3>Procedural Radial Upgrade Tree</h3><p>Colony upgrade tree with a deterministic radial sector layout, unlock flow, tiered upgrades and cost/stat preview cards.</p><ul class="tags"><li>Procedural layout</li><li>UI</li><li>Progression</li></ul></figcaption></figure></div>
+  </section>
+  <div class="cv">
+    <section>
+      <div class="sec-h"><h2>Experience</h2></div>
+      <article class="job"><header><h3>Unity Developer <span class="at">· FLEXUS</span></h3><time>Mar 2025 – Present</time></header><ul><li>Designed and implemented the <strong>network architecture</strong> for a <strong>multiplayer game</strong></li><li>Built <strong>core game systems from scratch</strong>, including a range of game mechanics</li><li>Developed a <strong>custom physics system</strong> tailored to the project&#x27;s needs</li><li>Worked with an <strong>ECS-style architecture</strong></li><li>Created <strong>custom shaders and Render Features (URP)</strong></li><li><strong>Optimized games for mobile devices</strong>, improving performance and stability</li><li>Used an <strong>AI-assisted development workflow</strong> to accelerate implementation and iteration</li></ul></article><article class="job"><header><h3>Unity Developer <span class="at">· 24 Play LLC</span></h3><time>May 2024 – Jan 2025</time></header><ul><li>Developed <strong>game mechanics</strong> and <strong>optimized games for mobile devices</strong></li><li>Integrated <strong>SDKs and IAP</strong>, and supported live projects</li><li><strong>Balanced game mechanics</strong> and implemented <strong>VFX and SFX</strong></li><li>Collaborated with <strong>cross-functional teams</strong> across the full game development cycle</li></ul></article><article class="job"><header><h3>Unity 3D Developer <span class="at">· Factura</span></h3><time>Feb 2024 – Apr 2024</time></header><ul><li>Worked across the <strong>full development cycle</strong> of <strong>iOS and Android</strong> games</li><li>Built <strong>UI and animations</strong></li><li>Worked with <strong>2D and 3D physics</strong></li><li>Implemented a range of <strong>game mechanics</strong></li></ul></article><article class="job"><header><h3>Unity Developer <span class="at">· Tasty Colosseum (indie team)</span></h3><time>May 2025 – Present</time></header><ul><li>Built an <strong>FSM-based enemy behaviour system</strong> with Strategy-driven unit types, and a separate <strong>Behaviour Tree boss</strong> mechanic</li><li>Replaced a hardcoded stats class with an <strong>IStat-based architecture</strong> supporting runtime-registered stats and a <strong>reactive stats panel</strong></li><li>Built a <strong>wave management state machine</strong>, separating WaveManager from WaveController</li><li>Designed a <strong>ScriptableObject quest system</strong> with step dependencies and reward strategies</li><li>Built a <strong>JSON save/load system</strong> covering building persistence, map progress and card collection state</li><li>Designed a <strong>card modifier system</strong> with an Activate/Tick/Click/Deactivate lifecycle</li><li>Wrote a <strong>deterministic radial sector layout</strong> for a <strong>procedural upgrade tree</strong>, fixing uneven ring placement and edge intersections</li><li>Designing an <strong>Addressables-based asset manager</strong> with per-asset pools</li></ul></article>
+    </section>
+    <aside>
+      <section><div class="sec-h"><h2>Skills</h2></div><div class="skill"><h4>Core</h4><ul class="chips"><li>C#</li><li>Unity (2D/3D)</li><li>Universal Render Pipeline (URP)</li><li>Custom Shaders</li><li>Render Features</li></ul></div><div class="skill"><h4>Architecture</h4><ul class="chips"><li>Dependency Injection (VContainer)</li><li>ECS-style architecture</li><li>Composition</li><li>Data-driven design</li><li>ScriptableObjects</li><li>FSM</li><li>Behaviour Trees</li><li>Strategy pattern</li></ul></div><div class="skill"><h4>Gameplay &amp; Systems</h4><ul class="chips"><li>Multiplayer / Network architecture</li><li>Custom physics</li><li>2D/3D physics</li><li>Save/Load (JSON)</li><li>Quest systems</li><li>UI &amp; Animation</li><li>VFX &amp; SFX</li><li>Game balancing</li></ul></div><div class="skill"><h4>Libraries &amp; Tools</h4><ul class="chips"><li>UniTask (async)</li><li>DOTween</li><li>Addressables</li><li>Object pooling</li><li>AI-assisted development (Claude</li><li>Codex)</li></ul></div><div class="skill"><h4>Platforms &amp; Release</h4><ul class="chips"><li>PC (Steam)</li><li>iOS</li><li>Android</li><li>Mobile performance optimization</li><li>SDK integration</li><li>In-App Purchases (IAP)</li></ul></div></section>
+      <section><div class="sec-h"><h2>Projects</h2></div><ul class="projects"><li><div class="pname"><a href="https://store.steampowered.com/app/4534960/Dear_Passengers/">Dear Passengers</a><span class="plat">Steam</span></div><p>Worked as part of the technical team at FLEXUS</p></li><li><div class="pname"><a href="https://play.google.com/store/apps/details?id=flexus.dye.hard&hl=en-US">Dye Hard</a><span class="plat">Google Play</span></div><p>Implemented various game mechanics and optimized performance</p></li><li><div class="pname"><a href="https://play.google.com/store/apps/details?id=com.carfix.garage&hl=en-US">My Summer Garage</a><span class="plat">Google Play</span></div><p>Supported and shipped multiple iterations of the game</p></li><li><div class="pname">Mighty Guards</div><p>Developed and supported the game as a solo developer</p></li><li><div class="pname">AI Auto Testing</div><p>Fully automated testing system using the Claude/Codex API as a decision model</p></li><li><div class="pname">Cursor Quest</div><p>Cursor-combat roguelite with a cozy camp hub; Lead Developer</p></li></ul></section>
+      <section><div class="sec-h"><h2>Languages</h2></div><ul class="langs"><li><span>English</span><span class="lvl">C2</span></li><li><span>Ukrainian</span><span class="lvl">Native</span></li></ul></section>
+    </aside>
+  </div>
+</main>
+<script>
+// Pause clips for viewers who prefer reduced motion; they can still play them with controls.
+if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.controls = true; });
+}
+</script>
+</body>
+</html>
